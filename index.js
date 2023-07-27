@@ -7,7 +7,7 @@ import {
 } from "./utils/product.js";
 
 try {
-  deleteProduct(1005);
+  deleteProduct(1004);
 } catch (error) {
   console.error("Unable to connect to the database:", error);
 }
