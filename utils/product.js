@@ -9,11 +9,21 @@ const inserProduct = async (name, imgURL, desc) => {
   console.log(`Product inserted => `, newProduct);
 };
 
-const fetchProduct = async () => {
-  const products = await Product.findAll({
-    attributes: ["product_name", "product_img", "product_desc"],
-  });
-  console.log(products);
+const fetchProduct = async (id) => {
+  let products;
+
+  if (id) {
+    products = await Product.findOne({
+      where: { id: id },
+      attributes: ["product_name", "product_img", "product_desc"],
+    });
+  } else {
+    products = await Product.findAll({
+      attributes: ["product_name", "product_img", "product_desc"],
+    });
+  }
+
+  return products;
 };
 
 const updateProduct = async (id, name, imgURL, desc) => {
