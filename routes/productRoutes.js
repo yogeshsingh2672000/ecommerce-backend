@@ -11,6 +11,17 @@ router.get("/hi", (req, res) => {
   res.send("product apis working");
 });
 
+router.post("/create", async (req, res) => {
+  const { name, img, desc } = req.body;
+  try {
+    await inserProduct(name, img, desc);
+    res.status(200).json({ status: 1 });
+  } catch (err) {
+    console.log("error in creating a product", err);
+    res.status(500).json({ status: 1, error: "error in creating a product" });
+  }
+});
+
 // fetch all
 router.get("/all", async (req, res) => {
   try {
