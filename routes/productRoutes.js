@@ -15,7 +15,8 @@ router.get("/hi", (req, res) => {
 router.get("/all", async (req, res) => {
   try {
     const products = await fetchProduct();
-    res.status(200).json({ products: products });
+    const serializedData = JSON.stringify(products);
+    res.status(200).send(serializedData);
   } catch (err) {
     console.error("Error fetching products:", err);
     res.status(500).json({ error: "Failed to fetch products" });
@@ -27,7 +28,8 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const products = await fetchProduct(id && id);
-    res.status(200).json({ products: products });
+    const serializedData = JSON.stringify(products);
+    res.status(200).send(serializedData);
   } catch (err) {
     console.error("Error fetching products:", err);
     res.status(500).json({ error: "Failed to fetch products" });
