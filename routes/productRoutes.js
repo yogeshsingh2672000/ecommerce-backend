@@ -58,4 +58,17 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.delete("/delete", async (req, res) => {
+  const { id } = req.body;
+  try {
+    await deleteProduct(id);
+    res.status(200).json({ status: 1 });
+  } catch (err) {
+    console.log(`erorr while deleting product id:${id}`, err);
+    res
+      .status(500)
+      .json({ status: 0, error: `erorr while deleting product id:${id}` });
+  }
+});
+
 export default router;
