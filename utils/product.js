@@ -1,10 +1,12 @@
 import { Product } from "../models/Product.js";
 
-const inserProduct = async (name, imgURL, desc) => {
+const inserProduct = async (name, imgURL, desc, category, price) => {
   const newProduct = await Product.create({
     product_name: name,
     product_img: imgURL,
     product_desc: desc,
+    category: category,
+    price: price,
   });
   console.log(`Product inserted => `, newProduct);
 };
@@ -15,23 +17,37 @@ const fetchProduct = async (id) => {
   if (id) {
     products = await Product.findOne({
       where: { id: id },
-      attributes: ["product_name", "product_img", "product_desc"],
+      attributes: [
+        "product_name",
+        "product_img",
+        "product_desc",
+        "category",
+        "price",
+      ],
     });
   } else {
     products = await Product.findAll({
-      attributes: ["product_name", "product_img", "product_desc"],
+      attributes: [
+        "product_name",
+        "product_img",
+        "product_desc",
+        "category",
+        "price",
+      ],
     });
   }
 
   return products;
 };
 
-const updateProduct = async (id, name, imgURL, desc) => {
+const updateProduct = async (id, name, imgURL, desc, category, price) => {
   const newProduct = await Product.update(
     {
       product_name: name,
       product_img: imgURL,
       product_desc: desc,
+      category: category,
+      price: price,
     },
     {
       where: {

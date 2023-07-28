@@ -13,13 +13,13 @@ router.get("/hi", (req, res) => {
 
 // create signle
 router.post("/create", async (req, res) => {
-  const { name, img, desc } = req.body;
+  const { name, img, desc, category, price } = req.body;
   try {
-    await inserProduct(name, img, desc);
+    await inserProduct(name, img, desc, category, price);
     res.status(200).json({ status: 1 });
   } catch (err) {
     console.log("error in creating a product", err);
-    res.status(500).json({ status: 1, error: "error in creating a product" });
+    res.status(500).json({ status: 0, error: "error in creating a product" });
   }
 });
 
@@ -31,7 +31,7 @@ router.post("/update", async (req, res) => {
     res.status(200).json({ status: 1 });
   } catch (err) {
     console.log("error in updating a product", err);
-    res.status(500).json({ status: 1, error: "error in updating a product" });
+    res.status(500).json({ status: 0, error: "error in updating a product" });
   }
 });
 
