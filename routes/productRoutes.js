@@ -22,6 +22,17 @@ router.post("/create", async (req, res) => {
   }
 });
 
+router.post("/update", async (req, res) => {
+  const { id, name, img, desc } = req.body;
+  try {
+    await updateProduct(id, name, img, desc);
+    res.status(200).json({ status: 1 });
+  } catch (err) {
+    console.log("error in updating a product", err);
+    res.status(500).json({ status: 1, error: "error in updating a product" });
+  }
+});
+
 // fetch all
 router.get("/all", async (req, res) => {
   try {
