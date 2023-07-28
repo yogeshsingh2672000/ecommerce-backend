@@ -1,17 +1,3 @@
-// import { sequelize } from "./config/database.js";
-// import {
-//   inserProduct,
-//   fetchProduct,
-//   updateProduct,
-//   deleteProduct,
-// } from "./utils/product.js";
-
-// try {
-//   deleteProduct(1004);
-// } catch (error) {
-//   console.error("Unable to connect to the database:", error);
-// }
-
 import express from "express";
 import productRoutes from "./routes/productRoutes.js";
 
