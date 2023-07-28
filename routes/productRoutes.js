@@ -18,8 +18,8 @@ router.get("/all", async (req, res) => {
     const serializedData = JSON.stringify(products);
     res.status(200).send(serializedData);
   } catch (err) {
-    console.error("Error fetching products:", err);
-    res.status(500).json({ error: "Failed to fetch products" });
+    console.error("Failed to fetch all products", err);
+    res.status(500).json({ status: 0, error: "Failed to fetch all products" });
   }
 });
 
@@ -31,8 +31,10 @@ router.get("/:id", async (req, res) => {
     const serializedData = JSON.stringify(products);
     res.status(200).send(serializedData);
   } catch (err) {
-    console.error("Error fetching products:", err);
-    res.status(500).json({ error: "Failed to fetch products" });
+    console.error(`Failed to fetch id:${id} products`, err);
+    res
+      .status(500)
+      .json({ status: 0, error: `Failed to fetch id:${id} products` });
   }
 });
 
