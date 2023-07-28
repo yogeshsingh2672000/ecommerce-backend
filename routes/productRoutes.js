@@ -11,6 +11,7 @@ router.get("/hi", (req, res) => {
   res.send("product apis working");
 });
 
+// create signle
 router.post("/create", async (req, res) => {
   const { name, img, desc } = req.body;
   try {
@@ -22,6 +23,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
+// update signle
 router.post("/update", async (req, res) => {
   const { id, name, img, desc } = req.body;
   try {
@@ -58,6 +60,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// delete single
 router.delete("/delete", async (req, res) => {
   const { id } = req.body;
   try {
