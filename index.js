@@ -1,5 +1,6 @@
 import express from "express";
 import productRoutes from "./routes/productRoutes.js";
+import cors from "cors";
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use(express.json());
 
 // Middleware to handle URL-encoded data (for form submissions)
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors());
 
 // Define your API routes
 // You can create separate route files and import them here for better organization.
