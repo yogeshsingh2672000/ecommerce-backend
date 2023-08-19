@@ -15,26 +15,9 @@ const fetchProduct = async (id) => {
   let products;
 
   if (id) {
-    products = await Product.findOne({
-      where: { id: id },
-      attributes: [
-        "product_name",
-        "product_img",
-        "product_desc",
-        "category",
-        "price",
-      ],
-    });
+    products = await Product.findOne({where: { id: id }});
   } else {
-    products = await Product.findAll({
-      attributes: [
-        "product_name",
-        "product_img",
-        "product_desc",
-        "category",
-        "price",
-      ],
-    });
+    products = await Product.findAll({});
   }
 
   return products;
