@@ -26,8 +26,8 @@ const fetchProduct = async (id) => {
 const fetchAllProduct = async (page) => {
   try {
     const products = await Product.findAll({
-      limit: 10,
-      offset: page * 10,
+      limit: 9,
+      offset: page * 9,
     });
 
     return products;
