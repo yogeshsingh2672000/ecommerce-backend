@@ -15,12 +15,25 @@ const fetchProduct = async (id) => {
   let products;
 
   if (id) {
-    products = await Product.findOne({where: { id: id }});
+    products = await Product.findOne({ where: { id: id } });
   } else {
     products = await Product.findAll({});
   }
 
   return products;
+};
+
+const fetchAllProduct = async (page) => {
+  try {
+    const products = await Product.findAll({
+      limit: 10,
+      offset: page * 10,
+    });
+
+    return products;
+  } catch (err) {
+    throw err;
+  }
 };
 
 const updateProduct = async (id, name, imgURL, desc, category, price) => {
@@ -50,4 +63,10 @@ const deleteProduct = async (id) => {
   console.log(`Product id:${id} deleted => `, product);
 };
 
-export { inserProduct, fetchProduct, updateProduct, deleteProduct };
+export {
+  inserProduct,
+  fetchProduct,
+  fetchAllProduct,
+  updateProduct,
+  deleteProduct,
+};

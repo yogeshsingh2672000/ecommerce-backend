@@ -5,6 +5,7 @@ import {
   fetchProduct,
   updateProduct,
   deleteProduct,
+  fetchAllProduct,
 } from "../utils/product.js";
 
 router.get("/hi", (req, res) => {
@@ -37,8 +38,9 @@ router.post("/update", async (req, res) => {
 
 // fetch all
 router.get("/all", async (req, res) => {
+  const { page } = req.query;
   try {
-    const products = await fetchProduct();
+    const products = await fetchAllProduct(page ? page : 0);
     res.status(200).json(products);
   } catch (err) {
     console.error("Failed to fetch all products", err);
